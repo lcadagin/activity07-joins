@@ -642,6 +642,18 @@ dennys_laquinta %>%
 
 ![](activity07-joins_files/figure-gfm/unnamed-chunk-12-1.png)<!-- -->
 
+``` r
+us_states <- map_data("state") %>% 
+  select(lon = long, lat, group, id = subregion)
+
+ggplot() + 
+  geom_polygon(data = us_states, mapping = aes(lon, lat, group = group), fill = "white", colour = "grey50") +
+  geom_point(data = dennys_laquinta, mapping = aes(x = longitude, y = latitude, color = establishment), alpha = .5) +
+  coord_quickmap()
+```
+
+![](activity07-joins_files/figure-gfm/unnamed-chunk-12-2.png)<!-- -->
+
 **Response**: See above plot.
 
 ### More with visualizing

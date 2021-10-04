@@ -349,6 +349,14 @@ us_states <- map_data("state")
 dennys_laquinta %>% 
   ggplot(mapping = aes(x = longitude, y = latitude, color = establishment)) +
   geom_point(alpha = .5)
+
+us_states <- map_data("state") %>% 
+  select(lon = long, lat, group, id = subregion)
+
+ggplot() + 
+  geom_polygon(data = us_states, mapping = aes(lon, lat, group = group), fill = "white", colour = "grey50") +
+  geom_point(data = dennys_laquinta, mapping = aes(x = longitude, y = latitude, color = establishment), alpha = .5) +
+  coord_quickmap()
 ```
 
 
